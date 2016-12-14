@@ -422,6 +422,14 @@ export default class ReactGridLayout extends React.Component<Props, State> {
     if (!child.key) return;
     const l = getLayoutItem(this.state.layout, String(child.key));
     if (!l) return null;
+
+    if (child.props['data-grid']) {
+      l.h = child.props['data-grid'].h;
+      l.w = child.props['data-grid'].w;
+      l.x = child.props['data-grid'].x;
+      l.y = child.props['data-grid'].y;
+    }
+
     const {width, cols, margin, containerPadding, rowHeight,
            maxRows, isDraggable, isResizable, useCSSTransforms,
            draggableCancel, draggableHandle} = this.props;
